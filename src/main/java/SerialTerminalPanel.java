@@ -1,45 +1,91 @@
-import jssc.SerialPortList;
+import jssc.SerialPort;
+import jssc.SerialPortException;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.ResourceBundle;
 
-public class SerialTerminalPanel extends JPanel implements ActionListener {
+public class SerialTerminalPanel extends AbstractSerialTerminal {
     private IGetPortAndSpeed portAndSpeed;
-    private JButton setButton, resetButton;
-    private JTextField textField;
     private SerialDriver serialDriver;
-    public SerialTerminalPanel(IGetPortAndSpeed portAndSpeed, ResourceBundle bundle) {
+    private SerialPort serialPort;
+    private final CommandHistory commandHistory = new CommandHistory(100);
+    SerialTerminalPanel(IGetPortAndSpeed portAndSpeed, ResourceBundle bundle) {
+        super(bundle);
         this.portAndSpeed = portAndSpeed;
         serialDriver = new SerialDriver();
-        setLayout(new GridBagLayout());
-        textField = new JTextField("Some Text");
-        setButton = new JButton("Ініціалізувати Порт");
-        resetButton = new JButton("Надіслати Щось");
-        setButton.addActionListener(this);
-        resetButton.addActionListener(this);
+        onEnableWindow(false);
+        onSendCommand((ActionEvent event) -> {
+            String command = textField.getText();
+            send(command);
+            commandHistory.addCommand(command);
+            textField.setText("");
+        });
+        onClearCommand((ActionEvent event) -> textArea.setText(""));
+        textField.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP:
+                        if (commandHistory.hasPreviousCommand()) {
+                            textField.setText(
+                                    commandHistory.getPreviousCommand(textField.getText()));
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        if (commandHistory.hasNextCommand()) {
+                            textField.setText(commandHistory.getNextCommand());
+                        }
+                        break;
+                    case KeyEvent.VK_ESCAPE:
+                        textField.setText(commandHistory.resetHistoryLocation());
+                        break;
+                }
+            }
+        });
+    }
+
+    private void send(String s) {
+        if (serialDriver != null) {
+            switch (lineEndings.getSelectedIndex()) {
+                case 1:
+                    s += "\n";
+                    break;
+                case 2:
+                    s += "\r";
+                    break;
+                case 3:
+                    s += "\r\n";
+                    break;
+                default:
+                    break;
+            }
+            if ("".equals(s) && lineEndings.getSelectedIndex() == 0) {
+                JOptionPane.showMessageDialog(null, "Нічого небуло надіслано. Введіть щось!",
+                        "Помилка", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+            serialDriver.write(s);
+        }
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == setButton) {
+
             System.out.println(serialDriver.initPort(portAndSpeed.getPortAndSpeed()));
             System.out.println(portAndSpeed.getPortAndSpeed());
-        }
-        if (e.getSource() == resetButton) {
-            serialDriver.write(textField.getText());
+            if (serialDriver.isInit()) {
+                serialPort = serialDriver.getSerialPort();
+                try {
+                    serialPort.addEventListener(new PortReader(serialPort, super::updateTextArea), SerialPort.MASK_RXCHAR);
+                    onEnableWindow(true);
+                } catch (SerialPortException ignored) {
+                }
+            }
         }
     }
 
-    public void init() {
-        Insets insets = new Insets(2, 2, 2, 2);
-        add(textField, new GridBagConstraints(0, 0, 2, 1, 1, 1,
-                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL,
-                new Insets(10, 10, 10, 10), 0, 0));
-        add(setButton, new GridBagConstraints(0, 1, 1, 1, 1, 1,
-                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, insets, 0, 0));
-        add(resetButton, new GridBagConstraints(1, 1, 1, 1, 1, 1,
-                GridBagConstraints.CENTER, GridBagConstraints.HORIZONTAL, insets, 0, 0));
-    }
 }

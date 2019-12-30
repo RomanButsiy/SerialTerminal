@@ -7,9 +7,6 @@ public class PortAndSpeed {
         this.speed = speed;
     }
 
-    public PortAndSpeed() {
-    }
-
     public String getPort() {
         return port;
     }

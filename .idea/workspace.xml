@@ -1,7 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="53ecec4f-2d26-4bac-9b44-8f30adfcb82e" name="Default Changelist" comment="" />
+    <list default="true" id="53ecec4f-2d26-4bac-9b44-8f30adfcb82e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/AbstractSerialTerminal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/CommandHistory.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/IUpdateTextArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/IGetPortAndSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/IGetPortAndSpeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PortAndSpeed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PortAndSpeed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/PortReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/PortReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SerialDriver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SerialDriver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SerialTerminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SerialTerminal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SerialTerminalPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SerialTerminalPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resource_en.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/localization/resource_en.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/resource_uk.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/localization/resource_uk.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PortAndSpeed.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PortAndSpeed.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/PortReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/PortReader.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SerialDriver.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SerialDriver.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SerialTerminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SerialTerminal.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/SerialTerminalPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/SerialTerminalPanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resource_en.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/resource_uk.class" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,10 +32,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -25,10 +49,11 @@
   </component>
   <component name="ProjectId" id="1UA5pbVri8OLBv5ZY11CI9Iwflg" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propCompiler" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -73,5 +98,18 @@
       <updated>1574786744162</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>
