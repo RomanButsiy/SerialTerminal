@@ -4,6 +4,8 @@ import java.util.ResourceBundle;
 
 public class SerialTerminal {
 
+    // sudo usermod -aG dialout roman
+
     private static final String[][] resourceBundle = {{"English", "Українська"}, {"en", "uk"}};
     private static final int selectedLanguage = 1;
 
